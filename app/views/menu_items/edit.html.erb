@@ -1,0 +1,6 @@
+<h1>Editing Menu Item</h1>
+
+<%= render 'form', menu_item: @menu_item, url: menu_menu_item_path(@menu, @menu_item) %>
+
+<%= link_to 'Show', menu_menu_item_path(@menu, @menu_item) %> |
+<%= link_to 'Back', menu_menu_items_path(@menu) %>

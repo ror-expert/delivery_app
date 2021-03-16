@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Menus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.title %></td>
+        <td><%= link_to 'Show', menu if policy(:menu).show? %></td>
+        <td><%= link_to 'Edit', edit_menu_path(menu) if policy(:menu).edit? %></td>
+        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } if policy(:menu).destroy? %></td>
+        <td><%= link_to 'Items', menu_menu_items_path(menu) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Menu', new_menu_path if policy(:menu).new? %>

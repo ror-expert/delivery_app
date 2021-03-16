@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @menu_item.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @menu_item.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @menu_item.price %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(@menu_item.image.url, size: "100x100") if @menu_item.image.present?  %>
+</p>
+
+<%= link_to 'Edit', edit_menu_menu_item_path(@menu, @menu_item) if policy(:menu_item).edit? %>
+<%= link_to 'Back', menu_menu_items_path(@menu) %>

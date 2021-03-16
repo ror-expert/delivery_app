@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Menu Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menu_items.each do |menu_item| %>
+      <tr>
+        <td><%= menu_item.title %></td>
+        <td><%= menu_item.description %></td>
+        <td><%= menu_item.price %></td>
+        <td><%= image_tag(menu_item.image.url, size: "50x50") if menu_item.image.present? %></td>
+        <td><%= link_to 'Show', menu_menu_item_path(@menu, menu_item) if policy(:menu_item).show? %></td>
+        <td><%= link_to 'Edit', edit_menu_menu_item_path(@menu, menu_item) if policy(:menu_item).edit? %></td>
+        <td><%= link_to 'Destroy', menu_menu_item_path(@menu, menu_item), method: :delete, data: { confirm: 'Are you sure?' } if policy(:menu_item).destroy? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Menu Item', new_menu_menu_item_path(@menu) if policy(:menu_item).new? %>
+<%= link_to 'Back', menus_path %>
